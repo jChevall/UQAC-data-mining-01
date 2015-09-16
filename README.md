@@ -14,6 +14,16 @@ Le jeu de données utilisé contient près de 5 millions d'instances et provient
 
 Lors de ce travail, nous utiliserons le logiciel weka pour supporter notre classifier ID3 modifié. Cela permet de réutiliser le travail déjà existant au niveau de l'interface graphique qui permettra de visualiser les données utilisées.
 
+
+# transformations du fichier d'entrée
+
+Nous avons téléchargé le fichier 'kddcup.data_10_percent_corrted' depuis l'adresse indiquée dans le sujet. Cependant, ce
+fichier n'est pas au format d'entrée de Weka. Il faudra donc effectuer une transformation de celui-ci.
+
+Une première chose à faire est d'enlever les points en fin de ligne.
+Cela peut être effectué par la commande : sed 's/\.$//g' kddcup.data_10_percent_corrted > kddcup.txt
+Nous avons maintenant le fichier kddcup.txt qui se rapproche du format souhaité.
+
 # Bibliographie
 
 - https://weka.wikispaces.com/Writing+your+own+Classifier+%28post+3.5.2%29
