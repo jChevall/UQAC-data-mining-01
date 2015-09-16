@@ -11,6 +11,9 @@ L'objectif de ce document est de retrouver les résultats obtenus dans l'article
 
 Le jeu de données utilisé contient près de 5 millions d'instances et provient de la DARPA (Defense Advanced Research Projects Agency) qui est l'agence qui effectue des travaux de recherche & dévelopement à usage militaire. 
 
+
+Lors de ce travail, nous utiliserons le logiciel weka pour supporter notre classifier ID3 modifié. Cela permet de réutiliser le travail déjà existant au niveau de l'interface graphique qui permettra de visualiser les données utilisées.
+
 # Bibliographie
 
 - https://weka.wikispaces.com/Writing+your+own+Classifier+%28post+3.5.2%29
