@@ -21,8 +21,19 @@ Nous avons téléchargé le fichier 'kddcup.data_10_percent_corrted' depuis l'ad
 fichier n'est pas au format d'entrée de Weka. Il faudra donc effectuer une transformation de celui-ci.
 
 Une première chose à faire est d'enlever les points en fin de ligne.
-Cela peut être effectué par la commande : sed 's/\.$//g' kddcup.data_10_percent_corrted > kddcup.txt
+Cela peut être effectué par la commande : sed 's/\.$//g' kddcup.data_10_percent_corrted > kddcup.csv
+Il est possible d'espacer les entrées en remplaçant les ',' par ', ' avec la commande suivante :
+sed 's/,/, /g' kddcup.csv > kddcup2.csv
 Nous avons maintenant le fichier kddcup.txt qui se rapproche du format souhaité.
+
+
+Nous pouvons maintenant entrer les noms des attributs dans le fichier.
+Nous récupérons la description des champs sur la page http://kdd.ics.uci.edu/databases/kddcup99/task.html.
+
+On rajoute la ligne suivante en entrée du fichier qui correspond aux headers:
+
+duration, protocol_type, service, src_bytes, dst_bytes, flag, land, wrong_fragment, urgent, hot, num_failed_logins, logged_in, num_compromised, root_shell, su_attempted, num_root, num_file_creations, num_shells, num_access_files, num_outbound_cmds, is_hot_login, is_guest_login, count, serror_rate, rerror_rate, same_srv_rate, diff_srv_rate, srv_count, srv_serror_rate, srv_rerror_rate, srv_diff_host_rate
+
 
 
 # TODO
