@@ -25,9 +25,9 @@ numeric = [
 	True, False
 ]
 
-numeric = [
-	False for i in xrange(42)
-]
+#~ numeric = [
+	#~ False for i in xrange(42)
+#~ ]
 
 
 def get_possible_values(input_lines):
@@ -41,6 +41,10 @@ def get_possible_values(input_lines):
 				values[i].add(att)
 	return values
 
+def to_string_attribute_values(values_set):
+	return '{'+', '.join(list(values[i]))+'}'
+	
+
 if __name__ == '__main__':
 	input_name = sys.argv[1]
 	output_name = sys.argv[2]
@@ -48,6 +52,26 @@ if __name__ == '__main__':
 	input_lines = f.readlines()
 	
 	values = get_possible_values(input_lines)
-	for i in xrange(42):
-		print('field: {} values: {}'.format(fields[i],len(values[i])))
+	#~ for i in xrange(42):
+		#~ print('field: {} values: {}'.format(fields[i],len(values[i])))
+	
+	header = ''
+	header += '@relation kddcup\n'
+	for i in xrange(len(fields)):
+		if numeric[i]:
+			header += '@attribute {} numeric\n'.format(fields[i])
+		else:
+			header += '@attribute {} {}\n'.format(fields[i], to_string_attribute_values(values[i]))
+	header += '@data\n'
+	
+	# writing file
+	output_file = open(output_name, 'w')
+	output_file.write(header+'\n')
+	
+	# adding content
+	for i in input_lines:
+		output_file.write(i.replace('.\n', '')+'\n')
+		
+	output_file.close()
+	
 
