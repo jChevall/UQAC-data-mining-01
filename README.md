@@ -1,7 +1,52 @@
 # UQAC-data-mining-01
 Devoir proposé dans le cadre du cours de forage de données à l'UQAC. A pour but de détecter des intrusions avec une version améliorée de l'algorithme ID3.
 
+# 2.1 Synthèse
+
+L'article présenté porte sur la détection de tentatives d'intrusion dans un système informatique. Il présente un classifier inspiré de ID3. Celui-ci affiche, d'après l'article des performances bien supérieures aux classifiers existants sur un jeu de données. Celui-ci permet aux classifiers d'apprendre quelles requêtes sont des utilisations normales ou des attaques. 
+
+Il est également présenté dans l'article une constante 'alpha' comprise entre 0 et 1 qui influe sur une partie de l'algorithme.
+
+L'objectif de ce document est de retrouver les résultats obtenus dans l'article et d'étudier d'avantage l'influence de la constante 'alpha' dans les performances de l'algorithme.
+
+Le jeu de données utilisé contient près de 5 millions d'instances et provient de la DARPA (Defense Advanced Research Projects Agency) qui est l'agence qui effectue des travaux de recherche & dévelopement à usage militaire. 
+
+
+Lors de ce travail, nous utiliserons le logiciel weka pour supporter notre classifier ID3 modifié. Cela permet de réutiliser le travail déjà existant au niveau de l'interface graphique qui permettra de visualiser les données utilisées.
+
+
+# transformations du fichier d'entrée
+
+Nous avons téléchargé le fichier 'kddcup.data_10_percent_corrted' depuis l'adresse indiquée dans le sujet. Cependant, ce
+fichier n'est pas au format d'entrée de Weka. Il faudra donc effectuer une transformation de celui-ci.
+
+Une première chose à faire est d'enlever les points en fin de ligne.
+Cela peut être effectué par la commande : sed 's/\.$//g' kddcup.data_10_percent_corrted > kddcup.csv
+Il est possible d'espacer les entrées en remplaçant les ',' par ', ' avec la commande suivante :
+sed 's/,/, /g' kddcup.csv > kddcup2.csv
+Nous avons maintenant le fichier kddcup.txt qui se rapproche du format souhaité.
+
+
+Nous pouvons maintenant entrer les noms des attributs dans le fichier.
+Nous récupérons la description des champs sur la page http://kdd.ics.uci.edu/databases/kddcup99/task.html.
+
+On rajoute la ligne suivante en entrée du fichier qui correspond aux headers:
+
+sed -i '1iduration, protocol_type, service, src_bytes, dst_bytes, flag, land, wrong_fragment, urgent, hot, num_failed_logins, logged_in, num_compromised, root_shell, su_attempted, num_root, num_file_creations, num_shells, num_access_files, num_outbound_cmds, is_hot_login, is_guest_login, count, serror_rate, rerror_rate, same_srv_rate, diff_srv_rate, srv_count, srv_serror_rate, srv_rerror_rate, srv_diff_host_rate' kddcup2.csv 
+
+
+# TODO
+
+- rédiger l'abstract
+- reprendre le format d'entrée pour qu'il soit compatible avec celui-de Weka
+- importer un module perso dans weka
+- implémenter l'entropie
+
 # Bibliographie
 
 - https://weka.wikispaces.com/Writing+your+own+Classifier+%28post+3.5.2%29
   création d'un classifier avec Weka
+- http://repository.cmu.edu/cgi/viewcontent.cgi?article=1161&context=math
+  article portant sur l'entropie de Havrda et Charvat
+- http://kdd.ics.uci.edu/databases/kddcup99/
+  jeux de données utilisés
