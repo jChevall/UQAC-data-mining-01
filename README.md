@@ -20,20 +20,22 @@ Lors de ce travail, nous utiliserons le logiciel weka pour supporter notre class
 Nous avons téléchargé le fichier 'kddcup.data_10_percent_corrted' depuis l'adresse indiquée dans le sujet. Cependant, ce
 fichier n'est pas au format d'entrée de Weka. Il faudra donc effectuer une transformation de celui-ci.
 
-Une première chose à faire est d'enlever les points en fin de ligne.
-Cela peut être effectué par la commande : sed 's/\.$//g' kddcup.data_10_percent_corrted > kddcup.csv
-Il est possible d'espacer les entrées en remplaçant les ',' par ', ' avec la commande suivante :
-sed 's/,/, /g' kddcup.csv > kddcup2.csv
-Nous avons maintenant le fichier kddcup.txt qui se rapproche du format souhaité.
+Nous avons donc réalisé un script python qui prend en paramètre le nom du fichier téléchargé et un nom de fichier de sortie qui aura le format .arff pour Weka. De cette façon, les transformations sont automatisées et sont reproductibles.
+
+Ce script est disponible ici : https://github.com/librallu/UQAC-data-mining-01/blob/master/to_arff.py
+
+Basiquement, le script contient de base les informations des noms des attributs si ils sont discrets ou continus.
+Il extrait depuis le fichier d'entrée les différentes valeurs possibles des attributs, rajoute les meta informations
+pour weka et applique quelques reformatages des données.
 
 
-Nous pouvons maintenant entrer les noms des attributs dans le fichier.
-Nous récupérons la description des champs sur la page http://kdd.ics.uci.edu/databases/kddcup99/task.html.
+Il peut être utilisé par la commande suivante: 
 
-On rajoute la ligne suivante en entrée du fichier qui correspond aux headers:
+  python to_arff.py input_file output_file
 
-sed -i '1iduration, protocol_type, service, src_bytes, dst_bytes, flag, land, wrong_fragment, urgent, hot, num_failed_logins, logged_in, num_compromised, root_shell, su_attempted, num_root, num_file_creations, num_shells, num_access_files, num_outbound_cmds, is_hot_login, is_guest_login, count, serror_rate, rerror_rate, same_srv_rate, diff_srv_rate, srv_count, srv_serror_rate, srv_rerror_rate, srv_diff_host_rate' kddcup2.csv 
+output_file peut maintenant être chargé dans weka.
 
+Nous avons exécuté à titre d'example l'algorithme J48 sur ce jeu de données et obtenons le résultat présenté sur l'image https://github.com/librallu/UQAC-data-mining-01/blob/master/result_j48.png
 
 # TODO
 
