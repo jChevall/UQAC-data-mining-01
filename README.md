@@ -24,6 +24,14 @@ Une première chose à faire est d'enlever les points en fin de ligne.
 Cela peut être effectué par la commande : sed 's/\.$//g' kddcup.data_10_percent_corrted > kddcup.txt
 Nous avons maintenant le fichier kddcup.txt qui se rapproche du format souhaité.
 
+
+# TODO
+
+- rédiger l'abstract
+- reprendre le format d'entrée pour qu'il soit compatible avec celui-de Weka
+- importer un module perso dans weka
+- implémenter l'entropie
+
 # Bibliographie
 
 - https://weka.wikispaces.com/Writing+your+own+Classifier+%28post+3.5.2%29
