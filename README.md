@@ -32,8 +32,7 @@ Nous récupérons la description des champs sur la page http://kdd.ics.uci.edu/d
 
 On rajoute la ligne suivante en entrée du fichier qui correspond aux headers:
 
-duration, protocol_type, service, src_bytes, dst_bytes, flag, land, wrong_fragment, urgent, hot, num_failed_logins, logged_in, num_compromised, root_shell, su_attempted, num_root, num_file_creations, num_shells, num_access_files, num_outbound_cmds, is_hot_login, is_guest_login, count, serror_rate, rerror_rate, same_srv_rate, diff_srv_rate, srv_count, srv_serror_rate, srv_rerror_rate, srv_diff_host_rate
-
+sed -i '1iduration, protocol_type, service, src_bytes, dst_bytes, flag, land, wrong_fragment, urgent, hot, num_failed_logins, logged_in, num_compromised, root_shell, su_attempted, num_root, num_file_creations, num_shells, num_access_files, num_outbound_cmds, is_hot_login, is_guest_login, count, serror_rate, rerror_rate, same_srv_rate, diff_srv_rate, srv_count, srv_serror_rate, srv_rerror_rate, srv_diff_host_rate' kddcup2.csv 
 
 
 # TODO
