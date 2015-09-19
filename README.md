@@ -28,3 +28,5 @@ Nous avons maintenant le fichier kddcup.txt qui se rapproche du format souhaité
 
 - https://weka.wikispaces.com/Writing+your+own+Classifier+%28post+3.5.2%29
   création d'un classifier avec Weka
+- http://repository.cmu.edu/cgi/viewcontent.cgi?article=1161&context=math
+  article portant sur l'entropie de Havrda et Charvat 
