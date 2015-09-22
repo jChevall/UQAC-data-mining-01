@@ -2,6 +2,25 @@
 Devoir proposé dans le cadre du cours de forage de données à l'UQAC. A pour but de détecter des intrusions avec une version améliorée de l'algorithme ID3.
 
 # 2.1 Synthèse
+Plan de la synthèse
+Introduction
+Contexte article
+•	Sécurité info
+•	DARPA
+•	Intrusion
+Présentation des arbres de décision
+•	Objectif
+•	Utilisation
+•	Création
+Présentation de l'approche du projet
+•	Algo
+•	Entropie choisi
+•	Resultat attendu
+Résumé de l'expérimentation
+•	Mise en place
+•	Résultat
+Conclusion
+
 
 L'article présenté porte sur la détection de tentatives d'intrusion dans un système informatique. Il présente un classifier inspiré de ID3. Celui-ci affiche, d'après l'article des performances bien supérieures aux classifiers existants sur un jeu de données. Celui-ci permet aux classifiers d'apprendre quelles requêtes sont des utilisations normales ou des attaques. 
 
