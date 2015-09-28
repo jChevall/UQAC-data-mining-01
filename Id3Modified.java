@@ -41,7 +41,10 @@ import weka.core.Capabilities.Capability;
 import weka.core.TechnicalInformation.Field;
 import weka.core.TechnicalInformation.Type;
 
+import weka.core.Option;
+import weka.core.OptionHandler;
 import java.util.Enumeration;
+import java.util.Vector;
 
 /**
  <!-- globalinfo-start -->
@@ -74,6 +77,10 @@ import java.util.Enumeration;
  *  If set, classifier is run in debug mode and
  *  may output additional info to the console</pre>
  * 
+ * <pre> -C &lt;alpha value&gt;
+ *  Set alpha value for computing entropy.
+ *  (default 0.5)</pre>
+ * 
  <!-- options-end -->
  *
  * @author Eibe Frank (eibe@cs.waikato.ac.nz)
@@ -81,7 +88,7 @@ import java.util.Enumeration;
  */
 public class Id3Modified
   extends Classifier 
-  implements TechnicalInformationHandler, Sourcable {
+  implements OptionHandler, TechnicalInformationHandler, Sourcable {
 
   /** for serialization */
   static final long serialVersionUID = -2693678647096322561L;
@@ -100,6 +107,8 @@ public class Id3Modified
 
   /** Class attribute of dataset. */
   private Attribute m_ClassAttribute;
+  
+  private float m_alpha = 0.5f;
 
   /**
    * Returns a string describing the classifier.
@@ -320,7 +329,7 @@ public class Id3Modified
       classCounts[(int) inst.classValue()]++;
     }
 
-	double alpha = 0.5;
+	double alpha = m_alpha;
     double entropy = 0;
     for (int j = 0; j < data.numClasses(); j++) {
       if (classCounts[j] > 0) {
@@ -500,6 +509,66 @@ public class Id3Modified
   public String getRevision() {
     return RevisionUtils.extract("$Revision: 6404 $");
   }
+  
+  
+  /**
+   * Returns an enumeration describing the available options.
+   *
+   * Valid options are: <p>
+   *
+   * -C alpha <br>
+   * Set alpha value. (Default: 0.5) <p>
+   *
+   * @return an enumeration of all the available options.
+   */
+  public Enumeration listOptions() {
+	  Vector newVector = new Vector(1);
+	  newVector.addElement(new Option("\tSet alpha parameter.\n" +
+		"\t(default 0.25)",
+		"C", 1, "-C <alpha>"));
+	  return newVector.elements();
+  }
+  
+	/**
+	 *
+	 * Parses a given list of options.
+     * 
+     <!-- options-start -->
+     * 
+     * <pre> -C &lt;alpha&gt;
+     *  Set alpha value.
+     *  (default 0.5)</pre>
+     * 
+     <!-- options-end -->
+     * @param options the list of options as an array of strings
+     * @throws Exception if an option is not supported
+     */
+	public void setOptions(String[] options) throws Exception {
+		String alphaString = Utils.getOption('C', options);
+		if (alphaString.length() != 0) {
+			m_alpha = (new Float(alphaString)).floatValue();
+		} else {
+			m_alpha = 0.5f;
+		}
+	}
+	
+	public String [] getOptions() {
+		String [] options = new String [3];
+		options[0] = "-C";
+		options[1] = "" + m_alpha;
+		options[2] = "";
+		return options;
+	}
+	
+	public float getAlpha() {
+		return m_alpha;
+	}
+	
+	public void setAlpha(float alpha) {
+		m_alpha = alpha;
+	}
+  
+  
 
   /**
    * Main method.
