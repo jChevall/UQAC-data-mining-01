@@ -59,9 +59,13 @@ Nous avons exécuté à titre d'example l'algorithme J48 sur ce jeu de données 
 # TODO
 
 - rédiger l'abstract
-- reprendre le format d'entrée pour qu'il soit compatible avec celui-de Weka
-- importer un module perso dans weka
-- implémenter l'entropie
+- reprendre le format d'entrée pour qu'il soit compatible avec celui-de Weka <- fait
+- importer un module perso dans weka <- fait. Il suffit de recompiler les sources avec le fichier .java dedans
+- implémenter l'entropie <- fait. Testée sur weather-nominal. On est moins bons qu'avec l'entropie de Shannon.
+  Testée aussi sur le jeu de données transformé. Il s'avère que l'on a exactement le même résultat qu'avec l'entropie
+  de Shannon. C'est un peu étrange
+- ajouter le changement du alpha dans les paramètres de l'algorithme pour tester directement avec weka le changement du
+  alpha.
 
 # Bibliographie
 
