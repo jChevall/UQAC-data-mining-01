@@ -329,7 +329,7 @@ public class Id3Modified
       classCounts[(int) inst.classValue()]++;
     }
 
-	double alpha = m_alpha;
+	double alpha = getAlpha();
     double entropy = 0;
     for (int j = 0; j < data.numClasses(); j++) {
       if (classCounts[j] > 0) {
@@ -546,9 +546,9 @@ public class Id3Modified
 	public void setOptions(String[] options) throws Exception {
 		String alphaString = Utils.getOption('C', options);
 		if (alphaString.length() != 0) {
-			m_alpha = (new Float(alphaString)).floatValue();
+			setAlpha((new Float(alphaString)).floatValue());
 		} else {
-			m_alpha = 0.5f;
+			setAlpha(0.5f);
 		}
 	}
 	
