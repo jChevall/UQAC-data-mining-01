@@ -76,7 +76,8 @@ réponses correctes.
   Testée aussi sur le jeu de données transformé. Il s'avère que l'on a exactement le même résultat qu'avec l'entropie
   de Shannon. C'est un peu étrange
 - ajouter le changement du alpha dans les paramètres de l'algorithme pour tester directement avec weka le changement du
-  alpha.
+  alpha. <- fait
+- ajouter journal explicatif sur comment ajouter des paramètres à un algorithme dans weka
 
 # Bibliographie
 
