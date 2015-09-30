@@ -63,6 +63,10 @@ qui permet de proposer un format arff en sortie. Une fois ceci réalisé, il est
 le jeu de données et d'appliquer certains algorithmes comme C4.5 (J48 dans Weka). Celui-ci donne d'ailleurs des résultats biens meilleurs que ceux annoncés avec l'algorithme de l'article. Cela s'explique par le fait que les données fournies de base ont des attributs continus tandis que l'algorithme ID3 dont il est question dans l'article ne traite
 que des valeurs discrètes. Cela nous a mis la puce à l'oreille et avons compris que les auteurs de l'article ont fait le choix de supprimer toutes les données continues.
 
+Une deuxième étape est de modifier le script produit pour supprimer les données continues du jeu de données.
+Une fois ceci accompli, il est possible de lancer l'algorithme ID3 qui donne un résultat autour de 97-98 % de
+réponses correctes.
+
 # TODO
 
 - rédiger l'abstract
