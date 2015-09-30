@@ -56,6 +56,13 @@ output_file peut maintenant être chargé dans weka.
 
 Nous avons exécuté à titre d'example l'algorithme J48 sur ce jeu de données et obtenons le résultat présenté sur l'image https://github.com/librallu/UQAC-data-mining-01/blob/master/result_j48.png
 
+# Journal
+
+Dans un premier temps, nous nous sommes posés la question du format de données. Celui fourni de base n'est pas compatible avec weka (qui demande un format .arff). La première étape de notre projet à été de réaliser un script
+qui permet de proposer un format arff en sortie. Une fois ceci réalisé, il est possible à partir de Weka de charger
+le jeu de données et d'appliquer certains algorithmes comme C4.5 (J48 dans Weka). Celui-ci donne d'ailleurs des résultats biens meilleurs que ceux annoncés avec l'algorithme de l'article. Cela s'explique par le fait que les données fournies de base ont des attributs continus tandis que l'algorithme ID3 dont il est question dans l'article ne traite
+que des valeurs discrètes. Cela nous a mis la puce à l'oreille et avons compris que les auteurs de l'article ont fait le choix de supprimer toutes les données continues.
+
 # TODO
 
 - rédiger l'abstract
