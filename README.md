@@ -67,6 +67,10 @@ Une deuxième étape est de modifier le script produit pour supprimer les donné
 Une fois ceci accompli, il est possible de lancer l'algorithme ID3 qui donne un résultat autour de 97-98 % de
 réponses correctes.
 
+L'étape suivante est d'implémenter dans weka l'algorithme présenté dans l'article. Cet algorithme consiste à un simple
+changement d'heuristique. Nous reprenons donc les sources de ID3 dans weka et modifions la fonction ComputeHeuristic.
+Une fois ce changement effectué, il est possible d'exécuter dans Weka l'algorithme en question.
+
 # TODO
 
 - rédiger l'abstract
