@@ -71,6 +71,11 @@ L'étape suivante est d'implémenter dans weka l'algorithme présenté dans l'ar
 changement d'heuristique. Nous reprenons donc les sources de ID3 dans weka et modifions la fonction ComputeHeuristic.
 Une fois ce changement effectué, il est possible d'exécuter dans Weka l'algorithme en question.
 
+L'heuristique présente un paramètre alpha qu'il est possible de faire varier. Pour se faire, nous avons opté pour
+une modification de l'interface de Weka pour paramétrer l'algorithme directement depuis l'interface. Pour cela, nous
+modifions la docstring de la classe de ID3 modifiée et ajoutons des getters/setters pour le paramètre. De cette façon,
+une nouvelle option s'affiche pour paramétrer l'algorithme et nous pouvons maintenant faire varier ce paramètre.
+
 # TODO
 
 - rédiger l'abstract
