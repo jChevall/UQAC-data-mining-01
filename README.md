@@ -56,6 +56,26 @@ output_file peut maintenant être chargé dans weka.
 
 Nous avons exécuté à titre d'example l'algorithme J48 sur ce jeu de données et obtenons le résultat présenté sur l'image https://github.com/librallu/UQAC-data-mining-01/blob/master/result_j48.png
 
+# Journal
+
+Dans un premier temps, nous nous sommes posés la question du format de données. Celui fourni de base n'est pas compatible avec weka (qui demande un format .arff). La première étape de notre projet à été de réaliser un script
+qui permet de proposer un format arff en sortie. Une fois ceci réalisé, il est possible à partir de Weka de charger
+le jeu de données et d'appliquer certains algorithmes comme C4.5 (J48 dans Weka). Celui-ci donne d'ailleurs des résultats biens meilleurs que ceux annoncés avec l'algorithme de l'article. Cela s'explique par le fait que les données fournies de base ont des attributs continus tandis que l'algorithme ID3 dont il est question dans l'article ne traite
+que des valeurs discrètes. Cela nous a mis la puce à l'oreille et avons compris que les auteurs de l'article ont fait le choix de supprimer toutes les données continues.
+
+Une deuxième étape est de modifier le script produit pour supprimer les données continues du jeu de données.
+Une fois ceci accompli, il est possible de lancer l'algorithme ID3 qui donne un résultat autour de 97-98 % de
+réponses correctes.
+
+L'étape suivante est d'implémenter dans weka l'algorithme présenté dans l'article. Cet algorithme consiste à un simple
+changement d'heuristique. Nous reprenons donc les sources de ID3 dans weka et modifions la fonction ComputeHeuristic.
+Une fois ce changement effectué, il est possible d'exécuter dans Weka l'algorithme en question.
+
+L'heuristique présente un paramètre alpha qu'il est possible de faire varier. Pour se faire, nous avons opté pour
+une modification de l'interface de Weka pour paramétrer l'algorithme directement depuis l'interface. Pour cela, nous
+modifions la docstring de la classe de ID3 modifiée et ajoutons des getters/setters pour le paramètre. De cette façon,
+une nouvelle option s'affiche pour paramétrer l'algorithme et nous pouvons maintenant faire varier ce paramètre.
+
 # TODO
 
 - rédiger l'abstract
@@ -65,7 +85,8 @@ Nous avons exécuté à titre d'example l'algorithme J48 sur ce jeu de données 
   Testée aussi sur le jeu de données transformé. Il s'avère que l'on a exactement le même résultat qu'avec l'entropie
   de Shannon. C'est un peu étrange
 - ajouter le changement du alpha dans les paramètres de l'algorithme pour tester directement avec weka le changement du
-  alpha.
+  alpha. <- fait
+- ajouter journal explicatif sur comment ajouter des paramètres à un algorithme dans weka
 
 # Bibliographie
 
