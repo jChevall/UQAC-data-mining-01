@@ -322,23 +322,37 @@ public class Id3Modified
    */
   private double computeEntropy(Instances data) throws Exception {
 
+	double nbInst = 0;
     double [] classCounts = new double[data.numClasses()];
     Enumeration instEnum = data.enumerateInstances();
     while (instEnum.hasMoreElements()) {
       Instance inst = (Instance) instEnum.nextElement();
       classCounts[(int) inst.classValue()]++;
+      nbInst++;
     }
-
+    //~ System.out.println("-----");
+    //~ for ( int i = 0 ; i < data.numClasses(); i++ ){
+		//~ System.out.println(classCounts[i]);
+	//~ }
+	//~ System.out.println(data.numInstances());
+    
 	double alpha = getAlpha();
     double entropy = 0;
     for (int j = 0; j < data.numClasses(); j++) {
       if (classCounts[j] > 0) {
-		entropy += Math.pow(classCounts[j], alpha);
+		entropy += Math.pow(classCounts[j] / (double)data.numInstances(), m_alpha) -1.;
       }
     }
-    entropy -= 1.;
-    entropy *= Math.pow(Math.pow(2., 1.-alpha)-1, -1.);
-    return entropy;
+    return entropy * Math.pow(Math.pow(2.,1.-m_alpha)-1., -1.);
+    
+    
+    //~ double entropy = -1;
+    //~ for (int j = 0; j < data.numClasses(); j++) {
+		//~ if (classCounts[j] > 0) {
+			//~ entropy -= Math.pow((classCounts[j]) / (double)data.numInstances(), m_alpha);
+		//~ }
+	//~ }
+	//~ return entropy * Math.pow(Math.pow(2.,1.-m_alpha)-1., -1.);
   }
 
   /**
